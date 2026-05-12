@@ -1,33 +1,36 @@
 # Joaquín Studio Salon — Sistema Web (MVP V1)
 
-Este repositorio contiene la base funcional y técnica inicial para construir el sistema web responsive de gestión para estética/salón de belleza.
+Base inicial del sistema web responsive para la gestión de clientes, citas y expediente técnico.
 
 ## Stack
-- Next.js
-- TypeScript
+- Next.js 15 + TypeScript
 - Tailwind CSS
-- Supabase (PostgreSQL + Auth + Storage)
+- Supabase (Auth + PostgreSQL + Storage)
+- Deploy: Vercel
 
-## Alcance del MVP
-- Login (Administrador/Dueño, Estilista)
-- Dashboard básico
-- Módulo de clientes
-- Expediente técnico
-- Agenda/citas
-- Catálogo de servicios
-- Historial de visitas
-- Fórmulas de colorimetría
-- Fotos antes/después
-- Enlace WhatsApp con mensaje prellenado
+## Arranque local
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
 
-## Documentación
-- `docs/especificacion-funcional-v1.md`: especificación funcional consolidada.
-- `docs/mvp-backlog.md`: backlog priorizado para implementación.
-- `supabase/schema.sql`: esquema inicial de base de datos PostgreSQL.
+Abrir en `http://localhost:3000`.
 
-## Siguientes pasos recomendados
-1. Inicializar app Next.js con TypeScript y Tailwind.
-2. Conectar autenticación y DB en Supabase.
-3. Implementar navegación principal y layout responsive.
-4. Construir CRUD de clientes y citas.
-5. Agregar expediente técnico, fórmulas y storage de fotos.
+## ¿A dónde lo conectaremos?
+1. **Supabase**: proyecto nuevo para Auth, DB y Storage.
+2. **Vercel**: conectar este repositorio para deploy automático.
+3. Configurar en Vercel y local estas variables:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+## Base de datos
+Aplicar `supabase/schema.sql` en el SQL Editor de Supabase para crear:
+- Tablas: `users`, `clientes`, `expedientes_tecnicos`, `servicios`, `citas`, `visitas`, `formulas`, `fotos`, `visita_servicios`
+- Enums: `user_role`, `cita_estado`
+- Seed inicial del catálogo de servicios
+
+## Estado actual
+- Dashboard inicial renderizado
+- Verificación visual de si Supabase está configurado
+- Base de datos lista para iniciar CRUD de clientes/citas
